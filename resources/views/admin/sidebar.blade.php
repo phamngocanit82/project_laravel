@@ -1,132 +1,70 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="/admin" class="brand-link">
-        <img src="/template/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
-             class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="/template/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">admin@localhost.com</a>
-            </div>
-        </div>
-
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-bars"></i>
-                        <p> Danh Mục
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/menus/add" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm Danh Mục</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/menus/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh Sách Danh Mục</p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-store-alt"></i>
-                        <p> Sản Phẩm
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/products/add" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm Sản Phẩm</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/products/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh Sách Sản Phẩm</p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-images"></i>
-                        <p> Slider
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/sliders/add" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm Slider</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/sliders/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh Sách Slider</p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-cart-plus"></i>
-                        <p> Giỏ Hàng
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/customers" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh Sách Đơn Hàng</p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
+<header class="main-nav">
+  <div class="sidebar-user text-center"><a class="setting-primary" href="javascript:void(0)"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="/templates/admin/images/dashboard/1.png" alt="">
+    <div class="badge-bottom"><span class="badge badge-primary">New</span></div><a href="user-profile.html">
+      <h6 class="mt-3 f-14 f-w-600">Pham Ngoc An</h6></a>
+    <p class="mb-0 font-roboto">Administrator</p>
+  </div>
+  <nav>
+    <div class="main-navbar">
+      <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+      <div id="mainnav">           
+        <ul class="nav-menu custom-scrollbar">
+          <li class="back-btn">
+            <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
+          </li>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="airplay"></i><span>Section About</span></a>
+            <ul class="nav-submenu menu-content">
+              <li><a href="/admin/section-about/add">Add</a></li>
+              <li><a href="/admin/section-about/list">List</a></li>
             </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+          </li>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="box"></i><span>User group</span></a>
+            <ul class="nav-submenu menu-content">
+              <li><a href="/admin/user-group/add">Add</a></li>
+              <li><a href="/admin/user-group/list">List</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="users"></i><span>User</span></a>
+            <ul class="nav-submenu menu-content">
+              <li><a href="/admin/user/add">Add</a></li>
+              <li><a href="/admin/user/list">List</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active"  href="javascript:void(0)"><i data-feather="box"></i><span>Product Group</span></a>
+            <ul class="nav-submenu menu-content">
+              <li><a href="/admin/product-group/add">Add</a></li>
+              <li><a href="/admin/product-group/list">List</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>Product</span></a>
+            <ul class="nav-submenu menu-content">
+              <li><a href="/admin/product/add">Add</a></li>
+              <li><a href="/admin/product/list">List</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>Specials</span></a>
+            <ul class="nav-submenu menu-content">
+              <li><a href="#">Add</a></li>
+              <li><a href="#">List</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>News</span></a>
+            <ul class="nav-submenu menu-content">
+              <li><a href="#">Add</a></li>
+              <li><a href="#">List</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>Contacts</span></a>
+            <ul class="nav-submenu menu-content">
+              <li><a href="#">Inbox</a></li>
+              <li><a href="#">Trash</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>About</span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
     </div>
-    <!-- /.sidebar -->
-</aside>
+  </nav>
+</header>

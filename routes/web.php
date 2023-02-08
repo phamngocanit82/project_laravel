@@ -1,9 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Users\LoginController;
-use App\Http\Controllers\Admin\MainController;
-use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\User\LoginController;
+use App\Http\Controllers\Admin\User\UserGroupController;
+use App\Http\Controllers\Admin\User\UserController;
+use App\Http\Controllers\Admin\MainController as AdminMainController;
+use App\Http\Controllers\Admin\Product\ProductGroupController;
+use App\Http\Controllers\Admin\Product\ProductController;
+use App\Http\Controllers\Admin\SectionAboutController;
+use App\Http\Controllers\Client\AboutController;
+use App\Http\Controllers\Client\ContactController;
+use App\Http\Controllers\Client\MainController;
+use App\Http\Controllers\Client\ServiceController;
+use \App\Http\Controllers\Admin\UploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,67 +23,63 @@ use App\Http\Controllers\Admin\MenuController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
-Route::post('admin/users/login/store', [LoginController::class, 'store']);
-Route::middleware(['auth'])->group(function () {
-
-    Route::prefix('admin')->group(function () {
-
-        Route::get('/', [MainController::class, 'index'])->name('admin');
-        Route::get('main', [MainController::class, 'index']);
-
-        #Menu
-        Route::prefix('menus')->group(function () {
-            Route::get('add', [MenuController::class, 'create']);
-            Route::post('add', [MenuController::class, 'store']);
-            Route::get('list', [MenuController::class, 'index']);
-            Route::get('edit/{menu}', [MenuController::class, 'show']);
-            Route::post('edit/{menu}', [MenuController::class, 'update']);
-            Route::DELETE('destroy', [MenuController::class, 'destroy']);
-        });
-
-        #Product
-        Route::prefix('products')->group(function () {
-            Route::get('add', [ProductController::class, 'create']);
-            Route::post('add', [ProductController::class, 'store']);
-            Route::get('list', [ProductController::class, 'index']);
-            Route::get('edit/{product}', [ProductController::class, 'show']);
-            Route::post('edit/{product}', [ProductController::class, 'update']);
-            Route::DELETE('destroy', [ProductController::class, 'destroy']);
-        });
-
-        #Slider
-        Route::prefix('sliders')->group(function () {
-            Route::get('add', [SliderController::class, 'create']);
-            Route::post('add', [SliderController::class, 'store']);
-            Route::get('list', [SliderController::class, 'index']);
-            Route::get('edit/{slider}', [SliderController::class, 'show']);
-            Route::post('edit/{slider}', [SliderController::class, 'update']);
-            Route::DELETE('destroy', [SliderController::class, 'destroy']);
-        });
-
-        #Upload
-        Route::post('upload/services', [\App\Http\Controllers\Admin\UploadController::class, 'store']);
-
-        #Cart
-        Route::get('customers', [\App\Http\Controllers\Admin\CartController::class, 'index']);
-        Route::get('customers/view/{customer}', [\App\Http\Controllers\Admin\CartController::class, 'show']);
-    });
-});
-
-Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
-Route::post('/services/load-product', [App\Http\Controllers\MainController::class, 'loadProduct']);
-
-Route::get('danh-muc/{id}-{slug}.html', [App\Http\Controllers\MenuController::class, 'index']);
-Route::get('san-pham/{id}-{slug}.html', [App\Http\Controllers\ProductController::class, 'index']);
-
-Route::post('add-cart', [App\Http\Controllers\CartController::class, 'index']);
-Route::get('carts', [App\Http\Controllers\CartController::class, 'show']);
-Route::post('update-cart', [App\Http\Controllers\CartController::class, 'update']);
-Route::get('carts/delete/{id}', [App\Http\Controllers\CartController::class, 'remove']);
-Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart']);
-
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('admin/user/login', [LoginController::class, 'index'])->name('login');
+Route::get('admin/user/forgot-password', [LoginController::class, 'forgot_password']);
+Route::get('admin/user/recover-password', [LoginController::class, 'recover_password']);
+
+Route::get('', [MainController::class, 'index']);
+Route::get('services', [ServiceController::class, 'index']);
+Route::get('about', [AboutController::class, 'index']);
+Route::get('contact', [ContactController::class, 'index']);
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminMainController::class, 'index']);
+    Route::get('main', [AdminMainController::class, 'index']);
+
+    Route::prefix('user-group')->name('user-group.')->group(function () {
+        Route::get('/', [UserGroupController::class, 'index'])->name('index');
+        Route::get('add', [UserGroupController::class, 'add'])->name('add');
+        Route::post('add', [UserGroupController::class, 'postAdd'])->name('post-add');
+        Route::get('edit/{id}', [UserGroupController::class, 'edit'])->name('edit');
+        Route::post('edit', [UserGroupController::class, 'postEdit'])->name('post-edit');
+        Route::get('list', [UserGroupController::class, 'list']);
+        Route::post('active', [UserGroupController::class, 'active']);
+        Route::delete('delete', [UserGroupController::class, 'delete']);
+    });
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('add', [UserController::class, 'add'])->name('add');
+        Route::post('add', [UserController::class, 'postAdd'])->name('post-add');
+        Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
+        Route::post('edit', [UserController::class, 'postEdit'])->name('post-edit');
+        Route::get('list', [UserController::class, 'list']);
+        Route::post('active', [UserController::class, 'active']);
+        Route::delete('delete', [UserController::class, 'delete']);
+    });
+    
+    #Section About
+    Route::prefix('section-about')->group(function () {
+        Route::get('add', [SectionAboutController::class, 'add']);
+        Route::get('list', [SectionAboutController::class, 'list']);
+    });
+
+    #Product group
+    Route::prefix('product-group')->name('product-group.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('add', [ProductGroupController::class, 'add'])->name('add');
+        Route::post('add', [ProductGroupController::class, 'postAdd'])->name('post-add');
+        Route::get('list', [ProductGroupController::class, 'list']);
+    });
+    Route::prefix('product')->group(function () {
+        Route::get('add', [ProductController::class, 'add']);
+        Route::get('list', [ProductController::class, 'list']);
+    });
+
+    #Upload
+    Route::post('upload-services', [UploadController::class, 'store']);
+
 });

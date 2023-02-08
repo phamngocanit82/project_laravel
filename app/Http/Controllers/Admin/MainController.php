@@ -9,8 +9,8 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('admin.home', [
-           'title' => 'Trang Quản Trị Admin'
-        ]);
+        $page_view = '';
+        $title = 'Admin page';
+        return view('admin.main', compact('page_view', 'title'));
     }
 }
