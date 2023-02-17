@@ -12,48 +12,28 @@
           <li class="back-btn">
             <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
           </li>
-          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="airplay"></i><span>Section About</span></a>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="plus-circle"></i><span>Add Items</span></a>
             <ul class="nav-submenu menu-content">
-              <li><a href="/admin/section-about/add">Add</a></li>
-              <li><a href="/admin/section-about/list">List</a></li>
+              <li><a href="/admin/user/add"><i data-feather="user"></i><span>User</span></a></li>
+              <li><a href="/admin/section-about/add"><i data-feather="airplay"></i><span>Section About</span></a></li>
+              <li><a href="/admin/product/add"><i data-feather="box"></i><span>Product</span></a></li>
+              <li><a href="/admin/special/add"><i data-feather="codepen"></i><span>Special</span></a></li>
+              <li><a href="/admin/event/add"><i data-feather="gift"></i><span>Event</span></a></li>
+              <li><a href="/admin/gallery/add"><i data-feather="image"></i><span>Gallery</span></a></li>
             </ul>
           </li>
-          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="box"></i><span>User group</span></a>
+
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="layers"></i><span>Items List</span></a>
             <ul class="nav-submenu menu-content">
-              <li><a href="/admin/user-group/add">Add</a></li>
-              <li><a href="/admin/user-group/list">List</a></li>
+              <li><a href="/admin/user/list"><i data-feather="users"></i><span>User</span></a></li>
+              <li><a href="/admin/section-about/list"><i data-feather="airplay"></i><span>Section About</span></a></li>
+              <li><a href="/admin/product/list"><i data-feather="box"></i><span>Product</span></a></li>
+              <li><a href="/admin/special/list"><i data-feather="codepen"></i><span>Special</span></a></li>
+              <li><a href="/admin/event/list"><i data-feather="gift"></i><span>Event</span></a></li>
+              <li><a href="/admin/gallery/list"><i data-feather="image"></i><span>Gallery</span></a></li>
             </ul>
           </li>
-          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="users"></i><span>User</span></a>
-            <ul class="nav-submenu menu-content">
-              <li><a href="/admin/user/add">Add</a></li>
-              <li><a href="/admin/user/list">List</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a class="nav-link menu-title link-nav active"  href="javascript:void(0)"><i data-feather="box"></i><span>Product Group</span></a>
-            <ul class="nav-submenu menu-content">
-              <li><a href="/admin/product-group/add">Add</a></li>
-              <li><a href="/admin/product-group/list">List</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>Product</span></a>
-            <ul class="nav-submenu menu-content">
-              <li><a href="/admin/product/add">Add</a></li>
-              <li><a href="/admin/product/list">List</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>Specials</span></a>
-            <ul class="nav-submenu menu-content">
-              <li><a href="#">Add</a></li>
-              <li><a href="#">List</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>News</span></a>
-            <ul class="nav-submenu menu-content">
-              <li><a href="#">Add</a></li>
-              <li><a href="#">List</a></li>
-            </ul>
-          </li>
+
           <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>Contacts</span></a>
             <ul class="nav-submenu menu-content">
               <li><a href="#">Inbox</a></li>

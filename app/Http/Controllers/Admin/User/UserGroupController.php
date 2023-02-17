@@ -68,6 +68,9 @@ class UserGroupController extends Controller
         if($user_group_list->currentPage()!=1){
             if(count($user_group_list)==0)
                 return redirect('admin/user-group/list');
+        }else{
+            if(count($user_group_list)==0)
+                return redirect('admin/suser/add');
         }
         return view('admin.main', compact('page_view', 'title', 'user_group_list', 'num_page'));
     }

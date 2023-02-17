@@ -19,7 +19,7 @@
               <td class="">{{$key + 1 + ($user_group_list->currentPage()-1)*$num_page}}</td>
               <td>{{$item->name}}</td>
               <td>{{$item->description}}</td>
-              <td class="text-center"><input class="form-check-input" id="user_group_active" name="user_group_active" type="checkbox" onclick="activeId(this, {{$item->id}})" {!!$item->active==1? 'checked':''!!}></td>
+              <td class="text-center"><input class="form-check-input" type="checkbox" id="user_group_active" name="user_group_active" onclick="activeId(this, {{$item->id}})" {!!$item->active==1? 'checked':''!!}></td>
               <td>
                 <div class="float-start">
                   <a class="btn btn-info btn-xs" href="{{route('admin.user-group.edit', ['id'=>$item->id])}}"><i class="fas fa-pencil-alt me-1"></i>Edit</a>

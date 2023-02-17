@@ -72,7 +72,7 @@ $(document).ready(function(){
       },
       dataType: 'json',
       success: function(response){
-        $('.user_group_name_error').text('');
+        resetErrorFields();
         var Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',

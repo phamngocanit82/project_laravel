@@ -16,8 +16,8 @@
               <textarea class="form-control" style ="height:60px" name="user_group_description">{{old('user_group_description') ?? $user_group->description}}</textarea>
             </div>
           </div>
-          <div class="mb-3 mt-2">
-            <input class="form-check-input" type="checkbox" id="user_group_active" {{ $user_group->active == 1 ? ' checked=""' : '' }}>
+          <div class="mb-3 mt-4">
+            <input class="form-check-input" type="checkbox" id="user_group_active" name="user_group_active" type="checkbox" onclick="activeId(this, {{$user_group->id}})" {!!$user_group->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>
           <button class="btn btn-primary" type="submit">Update</button>

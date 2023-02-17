@@ -1,5 +1,4 @@
 function resetFields(){
-  $('#user_group_id').val("0");
   $('input[name="user_first_name"]').val("");
   $('input[name="user_last_name"]').val("");
   $('input[name="user_middle_name"]').val("");
@@ -8,11 +7,12 @@ function resetFields(){
   $('input[name="user_email"]').val("");
   $('input[name="user_password"]').val("");
   $('input[name="user_confirm_password"]').val("");
+  $('input[name="file"]').val("");
   $('input[name="avatar_hidden"]').val("");
   $('input[name="thumb_hidden"]').val("");
   $('input[name="width_hidden"]').val("");
   $('input[name="height_hidden"]').val("");
-  $('#avatar_show').html('');
+  $('#image_user_show').html('');
 }
 function resetErrorFields(){
   $('.user_group_id_error').text('');
@@ -139,7 +139,7 @@ $(document).ready(function(){
       },
       dataType: 'json',
       success: function(response){
-        $('.user_group_name_error').text('');
+        resetErrorFields();
         var Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',

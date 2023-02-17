@@ -78,6 +78,9 @@ class UserController extends Controller
         if($user_list->currentPage()!=1){
             if(count($user_list)==0)
                 return redirect('admin/user/list');
+        }else{
+            if(count($user_list)==0)
+                return redirect('admin/user/add');
         }
         return view('admin.main', compact('page_view', 'title', 'user_list', 'num_page'));
     }

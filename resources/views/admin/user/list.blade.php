@@ -6,14 +6,14 @@
       <div class="col-xxl-4 col-lg-6">
         <div class="project-box mb-4">
           <div class="ribbon ribbon-clip-right ribbon-right ribbon-primary">{{$item->user_group_name}}</div>
-          <div class="row gallery my-gallery" id="aniimated-thumbnials13" itemscope="" data-pswp-uid="14">
-            <figure class="col-md-3 img-hover hover-14" itemprop="associatedMedia" itemscope=""><a href="{{$item->avatar}}" itemprop="contentUrl" data-size="{{$item->width}}x{{$item->height}}">
-              <div><img class="img-65 me-1 rounded-circle" style="width:65px; height:65px; object-fit:cover;" src="{{$item->thumb}}" itemprop="thumbnail" alt="{{$item->first_name.' '.$item->last_name.' '.$item->middle_name.' - '.$item->user_group_name}}"></div></a>
+          <div  class="gallery my-gallery mb-1" id="aniimated-thumbnials13" itemscope="" data-pswp-uid="14">
+            <figure style="width:100px; height:100px;" class="col-md-3 img-hover hover-14" itemprop="associatedMedia" itemscope=""><a href="{{$item->avatar}}" itemprop="contentUrl" data-size="{{$item->width}}x{{$item->height}}">
+              <div><img class="me-1 rounded-circle" style="width:100px; height:100px; object-fit:cover;" src="{{$item->thumb}}" itemprop="thumbnail" alt=""></div></a>
               <figcaption itemprop="caption description">{{$item->first_name.' '.$item->last_name.' '.$item->middle_name.' - '.$item->user_group_name}}</figcaption>
             </figure>
           </div>
-          <ul class="ms-0 mt-2 fa-ul">
-            <li><div><span class="mt-2">{{$item->first_name.' '.$item->last_name.' '.$item->middle_name}}</span></div></li>
+          <ul class="ms-0 fa-ul">
+            <li><div><b><h5>{{$item->first_name.' '.$item->last_name.' '.$item->middle_name}}</h5></b></div></li>
             <li><div class="mt-2"><span>{{$item->description}}</span></div></li>
           </ul>
           <ul class="ms-4 mt-2 fa-ul">
@@ -21,7 +21,7 @@
             <li><div class="mt-2"><span class="small fa-li"><i class="fas fa-lg fa-envelope"></i></span>{{$item->email}}</div></li>
           </ul>
           <div class="mt-4 float-end">
-            <input class="form-check-input" type="checkbox" id="user_active" name="user_active" type="checkbox" onclick="activeId(this, {{$item->id}})" {!!$item->active==1? 'checked':''!!}>
+            <input class="form-check-input" type="checkbox" id="user_active" name="user_active" onclick="activeId(this, {{$item->id}})" {!!$item->active==1? 'checked':''!!}>
             <a class="btn btn-info btn-xs" href="{{route('admin.user.edit', ['id'=>$item->id])}}"><i class="fas fa-pencil-alt me-1"></i>Edit</a>
             <a class="btn btn-danger btn-xs" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" onclick="passIdDelete({{$item->id}})"><i class="fas fa-trash me-1"></i>Delete</a>
           </div>

@@ -72,14 +72,14 @@
             <div class="col-md-12 mt-4">
               <label class="form-label">Avatar</label>
               <input class="form-control" type="file" name="file" id="avatar_upload" accept=".png, .jpg, .gif">
-              <div id="avatar_show"></div>
+              <div id="image_user_show"></div>
               <input type="hidden" name="avatar_hidden" id="avatar_hidden">
               <input type="hidden" name="thumb_hidden" id="thumb_hidden">
               <input type="hidden" name="width_hidden" id="width_hidden">
               <input type="hidden" name="height_hidden" id="height_hidden">
             </div>
           </div>
-          <div class="mb-3 mt-2">
+          <div class="mb-3 mt-4">
             <input class="form-check-input" type="checkbox" id="user_active" checked>
             <label class="form-label">Active</label>
           </div>

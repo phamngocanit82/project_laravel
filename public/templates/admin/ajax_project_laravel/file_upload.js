@@ -15,7 +15,7 @@ function file_upload(id_image_upload, id_image_show, url_image_hidden, folder){
     success: function (results) {
       if (results.error === false) {
           $(id_image_show).html('<div class="row gallery my-gallery mt-4" id="aniimated-thumbnials13" itemscope="" data-pswp-uid="1">' +
-'<figure class="col-md-3 img-hover hover-14" itemprop="associatedMedia" itemscope=""><a href="" itemprop="contentUrl" data-size="' + results.width + 'x' + results.height + '" data-bs-original-title="" title="" >' +
+'<figure class="col-md-3 img-hover hover-14" itemprop="associatedMedia" itemscope=""><a href="' + results.path + '" itemprop="contentUrl" data-size="' + results.width + 'x' + results.height + '" data-bs-original-title="" title="" >' +
 '<div><img src="' + results.path + '" itemprop="thumbnail" alt="Image description"></div></a>' +
 '<figcaption itemprop="caption description"></figcaption>' +
 '</figure>' +
@@ -39,7 +39,7 @@ $(document).ready(function(){
   $('#image_upload').change(function () {
     file_upload('#image_upload', '#image_show', '#image_hidden', 'product');
   });
-  $('#avatar_upload').change(function () {
-    file_upload('#avatar_upload', '#avatar_show', '#avatar_hidden', 'avatar');
+  $('#image_user_upload').change(function () {
+    file_upload('#image_user_upload', '#image_user_show', '#avatar_hidden', 'user');
   });
 });

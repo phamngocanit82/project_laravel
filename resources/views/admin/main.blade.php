@@ -5,7 +5,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('admin.head')
   </head>
-  <body class="sidebar">
+  <body class="dark-sidebar pace-done dark-only">
     <!-- Loader starts  class="dark-sidebar pace-done dark-only"-->
     <div class="loader-wrapper">
       <div class="theme-loader">    

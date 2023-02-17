@@ -16,7 +16,7 @@
               <textarea class="form-control" style ="height:60px" name="user_group_description">{{old('user_group_description')}}</textarea>
             </div>
           </div>
-          <div class="mb-3 mt-2">
+          <div class="mb-3 mt-4">
             <input class="form-check-input" type="checkbox" id="user_group_active" checked>
             <label class="form-label">Active</label>
           </div>

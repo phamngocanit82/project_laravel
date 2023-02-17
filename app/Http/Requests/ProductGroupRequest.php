@@ -24,20 +24,20 @@ class ProductGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_name' => 'required|min:5',
+            'product_group_name' => 'required|min:2',
         ];
     }
     public function messages()
     {
         return [
-            'product_name.required' => ':attribute bắt buộc phải nhập',
-            'product_name.min' => ':attribute không được nhỏ hơn :min ký tự',
+            'product_group_name.required' => ':attribute bắt buộc phải nhập',
+            'product_group_name.min' => ':attribute không được nhỏ hơn :min ký tự',
         ];
     }
     public function attributes()
     {
         return [
-            'product_name' => 'Tên sản phẩm',
+            'product_group_name' => 'Tên nhóm sản phẩm',
         ];
     }
 }

@@ -71,8 +71,8 @@
           <div class="row g-3">
             <div class="col-md-12 mt-4">
               <label class="form-label">Avatar</label>
-              <input class="form-control" type="file" name="file" id="avatar_upload" accept=".png, .jpg, .gif">
-              <div id="avatar_show">
+              <input class="form-control" type="file" name="file" id="image_user_upload" accept=".png, .jpg, .gif">
+              <div id="image_user_show">
                 <div class="row gallery my-gallery mt-4" id="aniimated-thumbnials13" itemscope="" data-pswp-uid="14">
                   <figure class="col-md-3 img-hover hover-14" itemprop="associatedMedia" itemscope=""><a href="{{$user->avatar}}" itemprop="contentUrl" data-size="{{$user->width}}x{{$user->height}}">
                     <div><img src="{{$user->thumb}}" itemprop="thumbnail" alt="Image description"></div></a>
@@ -86,8 +86,8 @@
               <input type="hidden" name="height_hidden" id="height_hidden" value="{{$user->height}}">
             </div>
           </div>
-          <div class="mb-3 mt-2">
-            <input class="form-check-input" type="checkbox" id="user_active" {{ $user->active == 1 ? ' checked=""' : '' }}>
+          <div class="mb-3 mt-4">
+            <input class="form-check-input" type="checkbox" id="user_active" name="user_active" type="checkbox" onclick="activeId(this, {{$user->id}})" {!!$user->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>
           <button class="btn btn-primary" type="submit">Update</button>
@@ -140,22 +140,6 @@
       <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
       <div class="pswp__caption">
         <div class="pswp__caption__center"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete this user</h5>
-        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">Do you want to delete?</div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
-        <button class="btn btn-danger" type="button" onclick="deleteRowId()" data-bs-dismiss="modal">Delete</button>
-        <input type="hidden" name="modal_hidden_value" id="modal_hidden_value">
       </div>
     </div>
   </div>

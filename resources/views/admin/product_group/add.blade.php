@@ -2,26 +2,18 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-        <form action="{{route('admin.product-group.post-add')}}" method="POST" id ="admin_product_group" enctype="multipart/form-data">
+      <form action="{{route('admin.product-group.post-add')}}" method="POST" id="admin_product_group_add">
           <div class="row g-3">
             <div class="col-md-12">
               <label class="form-label">Name</label>
-              <input class="form-control" type="text" name="product_name" value="{{old('product_name')}}">
-              <div><span class="text-danger product_name_error"></span></div>
+              <input class="form-control" name="product_group_name" value="{{old('product_group_name')}}">
+              <div><span class="text-danger product_group_name_error"></span></div>
             </div>
           </div>
           <div class="row g-3">
             <div class="col-md-12 mt-4">
               <label class="form-label">Description</label>
-              <textarea class="form-control" style ="height:60px" name="product_desc">{{old('product_desc')}}</textarea>
-            </div>
-          </div>
-          <div class="row g-3">
-            <div class="col-md-12 mt-4">
-              <label class="form-label">Thumb</label>
-              <input class="form-control" type="file" name="file" id="thumb_upload" accept=".png, .jpg, .gif">
-              <div id="thumb_show"></div>
-              <input type="hidden" name="thumb_hidden" id="thumb_hidden">
+              <textarea class="form-control" style ="height:60px" name="product_group_description">{{old('product_group_description')}}</textarea>
             </div>
           </div>
           <div class="row g-3">
@@ -30,17 +22,17 @@
               <input class="form-control" type="file" name="file" id="image_upload" accept=".png, .jpg, .gif">
               <div id="image_show"></div>
               <input type="hidden" name="image_hidden" id="image_hidden">
+              <input type="hidden" name="thumb_hidden" id="thumb_hidden">
+              <input type="hidden" name="width_hidden" id="width_hidden">
+              <input type="hidden" name="height_hidden" id="height_hidden">
             </div>
           </div>
-          <div class="mb-3 mt-2">
-            <div class="form-check">
-              <div class="checkbox p-0">
-                <input class="form-check-input" type="checkbox">
-                <label class="form-label">Active</label>
-              </div>
-            </div>
+          <div class="mb-3 mt-4">
+            <input class="form-check-input" type="checkbox" id="product_group_active" checked>
+            <label class="form-label">Active</label>
           </div>
           <button class="btn btn-primary" type="submit">Add</button>
+          <a class="ms-4 btn btn-primary" href="/admin/product-group/list">List</a>
           @csrf
         </form>
       </div>

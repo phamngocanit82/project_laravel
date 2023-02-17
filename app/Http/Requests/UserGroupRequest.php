@@ -24,7 +24,7 @@ class UserGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_group_name' => 'required|min:5',
+            'user_group_name' => 'required|min:2',
         ];
     }
     public function messages()
