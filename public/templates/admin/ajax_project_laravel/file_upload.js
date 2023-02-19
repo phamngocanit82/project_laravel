@@ -33,13 +33,28 @@ function file_upload(id_image_upload, id_image_show, url_image_hidden, folder){
 }
 
 $(document).ready(function(){
-  $('#thumb_upload').change(function () {
-    file_upload('#thumb_upload', '#thumb_show', '#thumb_hidden' , 'product');
-  });
-  $('#image_upload').change(function () {
-    file_upload('#image_upload', '#image_show', '#image_hidden', 'product');
-  });
   $('#image_user_upload').change(function () {
     file_upload('#image_user_upload', '#image_user_show', '#avatar_hidden', 'user');
+  });
+  $('#image_section_about_upload').change(function () {
+    file_upload('#image_section_about_upload', '#image_show', '#image_hidden', 'section_about');
+  });
+  $('#image_product_group_upload').change(function () {
+    file_upload('#image_product_group_upload', '#image_show', '#image_hidden', 'product_group');
+  });
+  $('#image_product_upload').change(function () {
+    file_upload('#image_product_upload', '#image_show', '#image_hidden', 'product');
+  });
+  $('#image_special_upload').change(function () {
+    file_upload('#image_special_upload', '#image_show', '#image_hidden', 'special');
+  });
+  $('#image_event_upload').change(function () {
+    file_upload('#image_event_upload', '#image_show', '#image_hidden', 'event');
+  });
+  $('#image_news_upload').change(function () {
+    file_upload('#image_news_upload', '#image_show', '#image_hidden', 'news');
+  });
+  $('#image_gallery_upload').change(function () {
+    file_upload('#image_gallery_upload', '#image_show', '#image_hidden', 'gallery');
   });
 });

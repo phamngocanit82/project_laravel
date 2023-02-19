@@ -15,6 +15,33 @@ class SpecialController extends Controller
     public function __construct(){
         $this->special = new Special();
     }
+    function displayViewAdd(){
+        return [
+            'page_view' => 'admin.special.add',
+            'title' => 'Thêm chương trình đặc biệt',
+            'button_save' => 'Lưu chương trình đặc biệt',
+            'button_list' => 'Danh sách chương trình đặc biệt',
+            'button_list_href' => '/admin/special/list',
+        ];   
+    }
+    function displayViewEdit(){
+        return [
+            'page_view' => 'admin.special.edit',
+            'title' => 'Chỉnh sửa thông tin chương trình đặc biệt',
+            'button_save' => 'Lưu chương trình đặc biệt',
+            'button_list' => 'Danh sách chương trình đặc biệt',
+            'button_list_href' => '/admin/special/list',
+        ];
+    }
+    function displayViewList(){
+        return [
+            'page_view' => 'admin.special.list',
+            'title' => 'Danh sách chương trình đặc biệt',
+            'search_view' => 'search',
+            'button_add' => 'Thêm chương trình đặc biệt',
+            'button_add_href' => '/admin/special/add',
+        ];
+    }
     function setData(SpecialRequest $request){
         return [
             'item' => $request->special_item,
@@ -34,9 +61,8 @@ class SpecialController extends Controller
         return self::list();
     }
     public function add(){
-        $page_view = 'admin.special.add';
-        $title = 'Specials / Add';
-        return view('admin.main', compact('page_view', 'title'));
+        $display_view = self::displayViewAdd();
+        return view('admin.main', compact('display_view'));
     }
     public function postAdd(SpecialRequest $request){
         $data = self::setData($request);
@@ -44,8 +70,7 @@ class SpecialController extends Controller
         return response()->json(['status'=>'success']);
     }
     public function edit(Request $request, $id){
-        $page_view = 'admin.special.edit';
-        $title = 'Specials / Edit';
+        $display_view = self::displayViewEdit();
         $special = $this->special->getId($id);
         if(!empty($id)){
             if(!empty($special[0])){
@@ -57,7 +82,7 @@ class SpecialController extends Controller
         }else{
             return redirect()->route('admin.special.index')->with('msg', 'liên kết không tồn tại');
         }
-        return view('admin.main', compact('page_view', 'title', 'special'));
+        return view('admin.main', compact('display_view', 'special'));
     }
     public function postEdit(SpecialRequest $request){
         $id = session('id');
@@ -66,8 +91,7 @@ class SpecialController extends Controller
         return response()->json(['status'=>'success']);
      }
     public function list(){
-        $page_view = 'admin.special.list';
-        $title = 'Specials / List';
+        $display_view = self::displayViewList();
         $num_page = self::PAGE;
         $special_list = $this->special->getPage(self::PAGE);
         if($special_list->currentPage()!=1){
@@ -77,7 +101,7 @@ class SpecialController extends Controller
             if(count($special_list)==0)
                 return redirect('admin/special/add');
         }
-        return view('admin.main', compact('page_view', 'title', 'special_list', 'num_page'));
+        return view('admin.main', compact('display_view', 'special_list', 'num_page'));
     }
     public function active(Request $request){
         $data = [

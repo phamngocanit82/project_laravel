@@ -2,56 +2,32 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-        <form form action="{{route('admin.event.post-edit')}}" method="POST" id="admin_event_edit">
+        <form form action="{{route('admin.why-us.post-edit')}}" method="POST" id="admin_why_us_edit">
           <div class="row g-3">
             <div class="col-md-4 mt-4">
             <label class="form-label">Title</label>
-              <input class="form-control" name="event_title" value="{{old('event_title') ?? $event->title}}">
-              <div><span class="text-danger event_title_error"></span></div>
+              <input class="form-control" name="why_us_title" value="{{old('why_us_title') ?? $why_us->title}}">
+              <div><span class="text-danger why_us_title_error"></span></div>
             </div>
           </div>
           <div class="row g-3">
             <div class="col-md-4 mt-4">
             <label class="form-label">Sub title</label>
-              <input class="form-control" name="event_sub_title" value="{{old('event_sub_title') ?? $event->sub_title}}">
-            </div>
-          </div>
-          <div class="row g-3">
-            <div class="col-md-4 mt-4">
-            <label class="form-label">Price</label>
-              <input class="form-control" name="event_price" value="{{old('event_price') ?? $event->price}}">
+              <input class="form-control" name="why_us_sub_title" value="{{old('why_us_sub_title') ?? $why_us->sub_title}}">
             </div>
           </div>
           <div class="row g-3">
             <div class="col-md-12 mt-4">
               <label class="form-label">Description</label>
-              <textarea class="form-control" style ="height:60px" name="event_description">{{old('event_description') ?? $event->description}}</textarea>
-            </div>
-          </div>
-          <div class="row g-3">
-            <div class="col-md-12 mt-4">
-              <label class="form-label">Image</label>
-              <input class="form-control" type="file" name="file" id="image_event_upload" accept=".png, .jpg, .gif">
-              <div id="image_show">
-                <div class="row gallery my-gallery mt-4" id="aniimated-thumbnials13" itemscope="" data-pswp-uid="14">
-                  <figure class="col-md-3 img-hover hover-14" itemprop="associatedMedia" itemscope=""><a href="{{$event->image}}" itemprop="contentUrl" data-size="{{$event->width}}x{{$event->height}}">
-                    <div><img src="{{$event->thumb}}" itemprop="thumbnail" alt="Image description"></div></a>
-                    <figcaption itemprop="caption description"></figcaption>
-                  </figure>
-                </div>
-              </div>
-              <input type="hidden" name="image_hidden" id="image_hidden" value="{{$event->image}}">
-              <input type="hidden" name="thumb_hidden" id="thumb_hidden" value="{{$event->thumb}}">
-              <input type="hidden" name="width_hidden" id="width_hidden" value="{{$event->width}}">
-              <input type="hidden" name="height_hidden" id="height_hidden" value="{{$event->height}}">
+              <textarea class="form-control" style ="height:60px" name="why_us_description">{{old('why_us_description') ?? $why_us->description}}</textarea>
             </div>
           </div>
           <div class="mb-3 mt-4">
-            <input class="form-check-input" type="checkbox" id="event_active" name="event_active" onclick="activeId(this, {{$event->id}})" {!!$event->active==1? 'checked':''!!}>
+            <input class="form-check-input" type="checkbox" id="why_us_active" name="why_us_active" onclick="activeId(this, {{$why_us->id}})" {!!$why_us->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>
           <button class="btn btn-primary" type="submit" id="button_save" hidden>Update</button>
-          <a class="ms-4 btn btn-primary" href="/admin/event/list" hidden>List</a>
+          <a class="ms-4 btn btn-primary" href="/admin/why-us/list" hidden>List</a>
           @csrf
         </form>
       </div>
@@ -106,5 +82,5 @@
 </div>
 @section('ajax')
 <script src="/templates/admin/ajax_project_laravel/file_upload.js"></script>
-<script src="/templates/admin/ajax_project_laravel/event.js"></script>
+<script src="/templates/admin/ajax_project_laravel/why_us.js"></script>
 @endsection

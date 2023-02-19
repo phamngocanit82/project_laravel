@@ -19,8 +19,8 @@
           <div class="row g-3">
             <div class="col-md-12 mt-4">
               <label class="form-label">Image</label>
-              <input class="form-control" type="file" name="file" id="image_upload" accept=".png, .jpg, .gif">
-              <div id="image_user_show">
+              <input class="form-control" type="file" name="file" id="image_section_about_upload" accept=".png, .jpg, .gif">
+              <div id="image_show">
                 <div class="row gallery my-gallery mt-4" id="aniimated-thumbnials13" itemscope="" data-pswp-uid="14">
                   <figure class="col-md-3 img-hover hover-14" itemprop="associatedMedia" itemscope=""><a href="{{$section_about->image}}" itemprop="contentUrl" data-size="{{$section_about->width}}x{{$section_about->height}}">
                     <div><img src="{{$section_about->thumb}}" itemprop="thumbnail" alt="Image description"></div></a>
@@ -38,8 +38,8 @@
             <input class="form-check-input" type="checkbox" id="section_about_active" name="section_about_active" onclick="activeId(this, {{$section_about->id}})" {!!$section_about->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>
-          <button class="btn btn-primary" type="submit">Update</button>
-          <a class="ms-4 btn btn-primary" href="/admin/section-about/list">List</a>
+          <button class="btn btn-primary" type="submit" id="button_save" hidden>Update</button>
+          <a class="ms-4 btn btn-primary" href="/admin/section-about/list" hidden>List</a>
           @csrf
         </form>
       </div>

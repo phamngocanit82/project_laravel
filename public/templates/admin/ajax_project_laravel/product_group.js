@@ -11,6 +11,10 @@ function resetFields(){
 function resetErrorFields(){
   $('.product_group_name_error').text('');
 }
+function submitForm() {
+  let button_save = document.getElementById("button_save");
+  button_save.click();
+}
 $(document).ready(function(){
   $('#admin_product_group_add').on('submit', function(e){
     e.preventDefault();

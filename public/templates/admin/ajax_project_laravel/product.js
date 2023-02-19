@@ -16,6 +16,10 @@ function resetErrorFields(){
   $('.product_name_error').text('');
   $('.product_code_error').text('');
 }
+function submitForm() {
+  let button_save = document.getElementById("button_save");
+  button_save.click();
+}
 $(document).ready(function(){
   $('#admin_product_add').on('submit', function(e){
     e.preventDefault();

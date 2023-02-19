@@ -15,6 +15,33 @@ class UserController extends Controller
     public function __construct(){
         $this->user = new User();
     }
+    function displayViewAdd(){
+        return [
+            'page_view' => 'admin.user.add',
+            'title' => 'Thêm người dùng',
+            'button_save' => 'Lưu người dùng',
+            'button_list' => 'Danh sách người dùng',
+            'button_list_href' => '/admin/user/list',
+        ];   
+    }
+    function displayViewEdit(){
+        return [
+            'page_view' => 'admin.user.edit',
+            'title' => 'Chỉnh sửa thông tin người dùng',
+            'button_save' => 'Lưu người dùng',
+            'button_list' => 'Danh sách người dùng',
+            'button_list_href' => '/admin/user/list',
+        ];
+    }
+    function displayViewList(){
+        return [
+            'page_view' => 'admin.user.list',
+            'title' => 'Danh sách người dùng',
+            'search_view' => 'search',
+            'button_add' => 'Thêm người dùng',
+            'button_add_href' => '/admin/user/add',
+        ];
+    }
     function setData(UserRequest $request){
         return [
             'user_group_id' => $request->user_group_id,
@@ -39,9 +66,8 @@ class UserController extends Controller
         return self::list();
     }
     public function add(){
-        $page_view = 'admin.user.add';
-        $title = 'Users / Add';
-        return view('admin.main', compact('page_view', 'title'));
+        $display_view = self::displayViewAdd();
+        return view('admin.main', compact('display_view'));
     }
     public function postAdd(UserRequest $request){
         $data = self::setData($request);
@@ -49,8 +75,7 @@ class UserController extends Controller
         return response()->json(['status'=>'success']);
     }
     public function edit(Request $request, $id){
-        $page_view = 'admin.user.edit';
-        $title = 'Users / Edit';
+        $display_view = self::displayViewEdit();
         $user = $this->user->getId($id);
         if(!empty($id)){
             if(!empty($user[0])){
@@ -62,7 +87,7 @@ class UserController extends Controller
         }else{
             return redirect()->route('admin.user.index')->with('msg', 'liên kết không tồn tại');
         }
-        return view('admin.main', compact('page_view', 'title', 'user'));
+        return view('admin.main', compact('display_view', 'user'));
     }
     public function postEdit(UserRequest $request){
         $id = session('id');
@@ -71,8 +96,7 @@ class UserController extends Controller
         return response()->json(['status'=>'success']);
      }
     public function list(){
-        $page_view = 'admin.user.list';
-        $title = 'Users / List';
+        $display_view = self::displayViewList();
         $num_page = self::PAGE;
         $user_list = $this->user->getPage(self::PAGE);
         if($user_list->currentPage()!=1){
@@ -82,7 +106,7 @@ class UserController extends Controller
             if(count($user_list)==0)
                 return redirect('admin/user/add');
         }
-        return view('admin.main', compact('page_view', 'title', 'user_list', 'num_page'));
+        return view('admin.main', compact('display_view', 'user_list', 'num_page'));
     }
     public function active(Request $request){
         $data = [

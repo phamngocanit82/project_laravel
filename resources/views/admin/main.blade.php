@@ -23,20 +23,11 @@
         <!-- Page Sidebar Start-->
         @include('admin.sidebar')
         <!-- Page Sidebar Ends-->
-        <div class="page-body" style="display: none; visibility: hidden;" id="body_content">
-          <div class="container-fluid">
-            <div class="page-header">
-              <div class="row">
-                <div class="col-sm-6">
-                  <h3>{{$title}}</h3>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="page-body" style="display: none; visibility: hidden;" id="body_content"> 
           <!-- Container-fluid starts-->
           <div class="container-fluid">
-            @if(!empty($page_view)) 
-              @include($page_view)
+            @if(!empty($display_view['page_view'])) 
+              @include($display_view['page_view'])
             @endif
           </div>
           <!-- Container-fluid Ends-->

@@ -16,6 +16,33 @@ class UserGroupController extends Controller
     public function __construct(){
         $this->user_group = new UserGroup();
     }
+    function displayViewAdd(){
+        return [
+            'page_view' => 'admin.user_group.add',
+            'title' => 'Thêm nhóm người dùng',
+            'button_save' => 'Lưu nhóm người dùng',
+            'button_list' => 'Danh sách nhóm người dùng',
+            'button_list_href' => '/admin/user-group/list',
+        ];   
+    }
+    function displayViewEdit(){
+        return [
+            'page_view' => 'admin.user_group.edit',
+            'title' => 'Chỉnh sửa thông tin nhóm người dùng',
+            'button_save' => 'Lưu nhóm người dùng',
+            'button_list' => 'Danh sách nhóm người dùng',
+            'button_list_href' => '/admin/user-group/list',
+        ];
+    }
+    function displayViewList(){
+        return [
+            'page_view' => 'admin.user_group.list',
+            'title' => 'Danh sách nhóm người dùng',
+            'search_view' => 'search',
+            'button_add' => 'Thêm nhóm người dùng',
+            'button_add_href' => '/admin/user-group/add',
+        ];
+    }
     function setData(UserGroupRequest $request){
         return [
             'name' => $request->user_group_name,
@@ -29,9 +56,8 @@ class UserGroupController extends Controller
         return self::list();
     }
     public function add(){
-        $page_view = 'admin.user_group.add';
-        $title = 'User Groups / Add';
-        return view('admin.main', compact('page_view', 'title'));
+        $display_view = self::displayViewAdd();
+        return view('admin.main', compact('display_view'));
     }
     public function postAdd(UserGroupRequest $request){
         $data = self::setData($request);
@@ -39,8 +65,7 @@ class UserGroupController extends Controller
         return response()->json(['status'=>'success']);
     }
     public function edit(Request $request, $id){
-        $page_view = 'admin.user_group.edit';
-        $title = 'User Groups / Edit';
+        $display_view = self::displayViewEdit();
         $user_group = $this->user_group->getId($id);
         if(!empty($id)){
             if(!empty($user_group[0])){
@@ -52,7 +77,7 @@ class UserGroupController extends Controller
         }else{
             return redirect()->route('admin.user-group.index')->with('msg', 'liên kết không tồn tại');
         }
-        return view('admin.main', compact('page_view', 'title', 'user_group'));
+        return view('admin.main', compact('display_view', 'user_group'));
     }
     public function postEdit(UserGroupRequest $request){
         $id = session('id');
@@ -61,8 +86,7 @@ class UserGroupController extends Controller
         return response()->json(['status'=>'success']);
      }
     public function list(){
-        $page_view = 'admin.user_group.list';
-        $title = 'User Groups / List';
+        $display_view = self::displayViewList();
         $num_page = self::PAGE;
         $user_group_list = $this->user_group->getPage(self::PAGE);
         if($user_group_list->currentPage()!=1){
@@ -72,7 +96,7 @@ class UserGroupController extends Controller
             if(count($user_group_list)==0)
                 return redirect('admin/suser/add');
         }
-        return view('admin.main', compact('page_view', 'title', 'user_group_list', 'num_page'));
+        return view('admin.main', compact('display_view', 'user_group_list', 'num_page'));
     }
     public function active(Request $request){
         $data = [

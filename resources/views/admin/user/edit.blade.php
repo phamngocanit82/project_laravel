@@ -90,8 +90,8 @@
             <input class="form-check-input" type="checkbox" id="user_active" name="user_active" type="checkbox" onclick="activeId(this, {{$user->id}})" {!!$user->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>
-          <button class="btn btn-primary" type="submit">Update</button>
-          <a class="ms-4 btn btn-primary" href="/admin/user/list">List</a>
+          <button class="btn btn-primary" type="submit" id="button_save" hidden>Update</button>
+          <a class="ms-4 btn btn-primary" href="/admin/user/list" hidden>List</a>
           @csrf
         </form>
       </div>

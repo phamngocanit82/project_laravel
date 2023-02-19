@@ -32,7 +32,7 @@
           <div class="row g-3">
             <div class="col-md-12 mt-4">
               <label class="form-label">Image</label>
-              <input class="form-control" type="file" name="file" id="image_upload" accept=".png, .jpg, .gif">
+              <input class="form-control" type="file" name="file" id="image_special_upload" accept=".png, .jpg, .gif">
               <div id="image_show">
                 <div class="row gallery my-gallery mt-4" id="aniimated-thumbnials13" itemscope="" data-pswp-uid="14">
                   <figure class="col-md-3 img-hover hover-14" itemprop="associatedMedia" itemscope=""><a href="{{$special->image}}" itemprop="contentUrl" data-size="{{$special->width}}x{{$special->height}}">
@@ -51,8 +51,8 @@
             <input class="form-check-input" type="checkbox" id="special_active" name="special_active" onclick="activeId(this, {{$special->id}})" {!!$special->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>
-          <button class="btn btn-primary" type="submit">Update</button>
-          <a class="ms-4 btn btn-primary" href="/admin/special/list">List</a>
+          <button class="btn btn-primary" type="submit" id="button_save" hidden>Update</button>
+          <a class="ms-4 btn btn-primary" href="/admin/special/list" hidden>List</a>
           @csrf
         </form>
       </div>

@@ -11,6 +11,10 @@ function resetFields(){
 function resetErrorFields(){
   $('.section_about_title_error').text('');
 }
+function submitForm() {
+  let button_save = document.getElementById("button_save");
+  button_save.click();
+}
 $(document).ready(function(){
   $('#admin_section_about_add').on('submit', function(e){
     e.preventDefault();

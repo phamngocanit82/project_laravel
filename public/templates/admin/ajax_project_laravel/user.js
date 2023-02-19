@@ -24,6 +24,10 @@ function resetErrorFields(){
   $('.user_password_error').text('');
   $('.user_confirm_password_error').text('');
 }
+function submitForm() {
+  let button_save = document.getElementById("button_save");
+  button_save.click();
+}
 $(document).ready(function(){
   $('#admin_user_add').on('submit', function(e){
     e.preventDefault();

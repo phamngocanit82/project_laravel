@@ -31,7 +31,7 @@
           <div class="row g-3">
             <div class="col-md-12 mt-4">
               <label class="form-label">Image</label>
-              <input class="form-control" type="file" name="file" id="image_upload" accept=".png, .jpg, .gif">
+              <input class="form-control" type="file" name="file" id="image_event_upload" accept=".png, .jpg, .gif">
               <div id="image_show"></div>
               <input type="hidden" name="image_hidden" id="image_hidden">
               <input type="hidden" name="thumb_hidden" id="thumb_hidden">
@@ -40,11 +40,11 @@
             </div>
           </div>
           <div class="mb-3 mt-4">
-            <input class="form-check-input" type="checkbox" id="event_active" checked>
+            <input class="form-check-input" type="checkbox" id="event_active" name="event_active" checked>
             <label class="form-label">Active</label>
           </div>
-          <button class="btn btn-primary" type="submit">Add</button>
-          <a class="ms-4 btn btn-primary" href="/admin/event/list">List</a>
+          <button class="btn btn-primary" type="submit" id="button_save" hidden>Add</button>
+          <a class="ms-4 btn btn-primary" href="/admin/event/list" hidden>List</a>
           @csrf
         </form>
       </div>

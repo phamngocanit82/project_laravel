@@ -15,6 +15,33 @@ class GalleryController extends Controller
     public function __construct(){
         $this->gallery = new Gallery();
     }
+    function displayViewAdd(){
+        return [
+            'page_view' => 'admin.gallery.add',
+            'title' => 'Thêm thư viện ảnh',
+            'button_save' => 'Lưu thư viện ảnh',
+            'button_list' => 'Danh sách thư viện ảnh',
+            'button_list_href' => '/admin/gallery/list',
+        ];   
+    }
+    function displayViewEdit(){
+        return [
+            'page_view' => 'admin.gallery.edit',
+            'title' => 'Chỉnh sửa thông tin thư viện ảnh',
+            'button_save' => 'Lưu thư viện ảnh',
+            'button_list' => 'Danh sách thư viện ảnh',
+            'button_list_href' => '/admin/gallery/list',
+        ];
+    }
+    function displayViewList(){
+        return [
+            'page_view' => 'admin.gallery.list',
+            'title' => 'Danh sách thư viện ảnh',
+            'search_view' => 'search',
+            'button_add' => 'Thêm thư viện ảnh',
+            'button_add_href' => '/admin/gallery/add',
+        ];
+    }
     function setData(GalleryRequest $request){
         return [
             'title' => $request->gallery_title,
@@ -32,9 +59,8 @@ class GalleryController extends Controller
         return self::list();
     }
     public function add(){
-        $page_view = 'admin.gallery.add';
-        $title = 'Galleries / Add';
-        return view('admin.main', compact('page_view', 'title'));
+        $display_view = self::displayViewAdd();
+        return view('admin.main', compact('display_view'));
     }
     public function postAdd(GalleryRequest $request){
         $data = self::setData($request);
@@ -42,8 +68,7 @@ class GalleryController extends Controller
         return response()->json(['status'=>'success']);
     }
     public function edit(Request $request, $id){
-        $page_view = 'admin.gallery.edit';
-        $title = 'Galleries / Edit';
+        $display_view = self::displayViewEdit();
         $gallery = $this->gallery->getId($id);
         if(!empty($id)){
             if(!empty($gallery[0])){
@@ -55,7 +80,7 @@ class GalleryController extends Controller
         }else{
             return redirect()->route('admin.gallery.index')->with('msg', 'liên kết không tồn tại');
         }
-        return view('admin.main', compact('page_view', 'title', 'gallery'));
+        return view('admin.main', compact('display_view', 'gallery'));
     }
     public function postEdit(GalleryRequest $request){
         $id = session('id');
@@ -64,8 +89,7 @@ class GalleryController extends Controller
         return response()->json(['status'=>'success']);
      }
     public function list(){
-        $page_view = 'admin.gallery.list';
-        $title = 'Galleries / List';
+        $display_view = self::displayViewList();
         $num_page = self::PAGE;
         $gallery_list = $this->gallery->getPage(self::PAGE);
         if($gallery_list->currentPage()!=1){
@@ -75,7 +99,7 @@ class GalleryController extends Controller
             if(count($gallery_list)==0)
                 return redirect('admin/gallery/add');
         }
-        return view('admin.main', compact('page_view', 'title', 'gallery_list', 'num_page'));
+        return view('admin.main', compact('display_view', 'gallery_list', 'num_page'));
     }
     public function active(Request $request){
         $data = [

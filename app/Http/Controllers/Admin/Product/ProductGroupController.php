@@ -15,6 +15,33 @@ class ProductGroupController extends Controller
     public function __construct(){
         $this->product_group = new ProductGroup();
     }
+    function displayViewAdd(){
+        return [
+            'page_view' => 'admin.product_group.add',
+            'title' => 'Thêm nhóm sản phẩm',
+            'button_save' => 'Lưu nhóm sản phẩm',
+            'button_list' => 'Danh sách nhóm sản phẩm',
+            'button_list_href' => '/admin/product-group/list',
+        ];   
+    }
+    function displayViewEdit(){
+        return [
+            'page_view' => 'admin.product_group.edit',
+            'title' => 'Chỉnh sửa thông tin nhóm sản phẩm',
+            'button_save' => 'Lưu nhóm sản phẩm',
+            'button_list' => 'Danh sách nhóm sản phẩm',
+            'button_list_href' => '/admin/product-group/list',
+        ];
+    }
+    function displayViewList(){
+        return [
+            'page_view' => 'admin.product_group.list',
+            'title' => 'Danh sách nhóm sản phẩm',
+            'search_view' => 'search',
+            'button_add' => 'Thêm nhóm sản phẩm',
+            'button_add_href' => '/admin/product-group/add',
+        ];
+    }
     function setData(ProductGroupRequest $request){
         return [
             'name' => $request->product_group_name,
@@ -32,9 +59,8 @@ class ProductGroupController extends Controller
         return self::list();
     }
     public function add(){
-        $page_view = 'admin.product_group.add';
-        $title = 'Product Group / Add';
-        return view('admin.main', compact('page_view', 'title'));
+        $display_view = self::displayViewAdd();
+        return view('admin.main', compact('display_view'));
     }
     public function postAdd(ProductGroupRequest $request){
         $data = self::setData($request);
@@ -42,8 +68,7 @@ class ProductGroupController extends Controller
         return response()->json(['status'=>'success']);
     }
     public function edit(Request $request, $id){
-        $page_view = 'admin.product_group.edit';
-        $title = 'Product Group / Edit';
+        $display_view = self::displayViewEdit();
         $product_group = $this->product_group->getId($id);
         if(!empty($id)){
             if(!empty($product_group[0])){
@@ -55,7 +80,7 @@ class ProductGroupController extends Controller
         }else{
             return redirect()->route('admin.product_group.index')->with('msg', 'liên kết không tồn tại');
         }
-        return view('admin.main', compact('page_view', 'title', 'product_group'));
+        return view('admin.main', compact('display_view', 'product_group'));
     }
     public function postEdit(ProductGroupRequest $request){
         $id = session('id');
@@ -64,8 +89,7 @@ class ProductGroupController extends Controller
         return response()->json(['status'=>'success']);
      }
     public function list(){
-        $page_view = 'admin.product_group.list';
-        $title = 'Product Group / List';
+        $display_view = self::displayViewList();
         $num_page = self::PAGE;
         $product_group_list = $this->product_group->getPage(self::PAGE);
         if($product_group_list->currentPage()!=1){
@@ -75,7 +99,7 @@ class ProductGroupController extends Controller
             if(count($product_group_list)==0)
                 return redirect('admin/product-group/add');
         }
-        return view('admin.main', compact('page_view', 'title', 'product_group_list', 'num_page'));
+        return view('admin.main', compact('display_view', 'product_group_list', 'num_page'));
     }
     public function active(Request $request){
         $data = [

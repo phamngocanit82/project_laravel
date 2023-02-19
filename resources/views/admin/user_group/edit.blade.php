@@ -20,8 +20,8 @@
             <input class="form-check-input" type="checkbox" id="user_group_active" name="user_group_active" type="checkbox" onclick="activeId(this, {{$user_group->id}})" {!!$user_group->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>
-          <button class="btn btn-primary" type="submit">Update</button>
-          <a class="ms-4 btn btn-primary" href="/admin/user-group/list">List</a>
+          <button class="btn btn-primary" type="submit" id="button_save" hidden>Update</button>
+          <a class="ms-4 btn btn-primary" href="/admin/user-group/list" hidden>List</a>
           @csrf
         </form>
       </div>

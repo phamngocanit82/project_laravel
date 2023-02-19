@@ -17,9 +17,11 @@
               <li><a href="/admin/user/add"><i data-feather="user"></i><span>User</span></a></li>
               <li><a href="/admin/section-about/add"><i data-feather="airplay"></i><span>Section About</span></a></li>
               <li><a href="/admin/product/add"><i data-feather="box"></i><span>Product</span></a></li>
+              <li><a href="/admin/why-us/add"><i data-feather="codepen"></i><span>Why Us</span></a></li>
               <li><a href="/admin/special/add"><i data-feather="codepen"></i><span>Special</span></a></li>
               <li><a href="/admin/event/add"><i data-feather="gift"></i><span>Event</span></a></li>
               <li><a href="/admin/gallery/add"><i data-feather="image"></i><span>Gallery</span></a></li>
+              <li><a href="/admin/news/add"><i data-feather="gift"></i><span>News</span></a></li>
             </ul>
           </li>
 
@@ -28,9 +30,11 @@
               <li><a href="/admin/user/list"><i data-feather="users"></i><span>User</span></a></li>
               <li><a href="/admin/section-about/list"><i data-feather="airplay"></i><span>Section About</span></a></li>
               <li><a href="/admin/product/list"><i data-feather="box"></i><span>Product</span></a></li>
+              <li><a href="/admin/why-us/list"><i data-feather="codepen"></i><span>Why Us</span></a></li>
               <li><a href="/admin/special/list"><i data-feather="codepen"></i><span>Special</span></a></li>
               <li><a href="/admin/event/list"><i data-feather="gift"></i><span>Event</span></a></li>
               <li><a href="/admin/gallery/list"><i data-feather="image"></i><span>Gallery</span></a></li>
+              <li><a href="/admin/news/list"><i data-feather="gift"></i><span>News</span></a></li>
             </ul>
           </li>
 

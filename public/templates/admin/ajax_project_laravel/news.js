@@ -1,8 +1,7 @@
 function resetFields(){
-  $('input[name="event_title"]').val("");
-  $('input[name="event_sub_title"]').val("");
-  $('input[name="event_price"]').val("");
-  $('textarea[name="event_description"]').val("");
+  $('input[name="news_title"]').val("");
+  $('input[name="news_sub_title"]').val("");
+  $('textarea[name="news_description"]').val("");
   $('input[name="file"]').val("");
   $('input[name="image_hidden"]').val("");
   $('input[name="thumb_hidden"]').val("");
@@ -11,27 +10,26 @@ function resetFields(){
   $('#image_show').html('');
 }
 function resetErrorFields(){
-  $('.event_title_error').text('');
-  $('.event_title_error').text('');
+  $('.news_title_error').text('');
+  $('.news_title_error').text('');
 }
 function submitForm() {
   let button_save = document.getElementById("button_save");
   button_save.click();
 }
 $(document).ready(function(){
-  $('#admin_event_add').on('submit', function(e){
+  $('#admin_news_add').on('submit', function(e){
     e.preventDefault();
-    let event_title = $('input[name="event_title"]').val().trim();
-    let event_sub_title = $('input[name="event_sub_title"]').val().trim();
-    let event_price = $('input[name="event_price"]').val().trim();
-    let event_description = $('textarea[name="event_description"]').val().trim();
+    let news_title = $('input[name="news_title"]').val().trim();
+    let news_sub_title = $('input[name="news_sub_title"]').val().trim();
+    let news_description = $('textarea[name="news_description"]').val().trim();
     let image_hidden = $('input[name="image_hidden"]').val().trim();
     let thumb_hidden = $('input[name="thumb_hidden"]').val().trim();
     let width_hidden = $('input[name="width_hidden"]').val().trim();
     let height_hidden = $('input[name="height_hidden"]').val().trim();
-    var event_active = $('#event_active');
+    var news_active = $('#news_active');
     active = 0;
-    if(event_active.prop('checked'))
+    if(news_active.prop('checked'))
       active = 1;
     let action_url = $(this).attr('action');
     let csrfToken = $(this).find('input[name="_token"]').val().trim();
@@ -39,15 +37,14 @@ $(document).ready(function(){
       url: action_url,
       type: 'POST',
       data: {
-        event_title: event_title,
-        event_sub_title: event_sub_title,
-        event_price: event_price,
-        event_description: event_description,
+        news_title: news_title,
+        news_sub_title: news_sub_title,
+        news_description: news_description,
         image_hidden: image_hidden,
         thumb_hidden: thumb_hidden,
         width_hidden: width_hidden,
         height_hidden: height_hidden,
-        event_active: active,
+        news_active: active,
         _token: csrfToken
       },
       dataType: 'json',
@@ -80,19 +77,18 @@ $(document).ready(function(){
     });
   });
 
-  $('#admin_event_edit').on('submit', function(e){
+  $('#admin_news_edit').on('submit', function(e){
     e.preventDefault();
-    let event_title = $('input[name="event_title"]').val().trim();
-    let event_sub_title = $('input[name="event_sub_title"]').val().trim();
-    let event_price = $('input[name="event_price"]').val().trim();
-    let event_description = $('textarea[name="event_description"]').val().trim();
+    let news_title = $('input[name="news_title"]').val().trim();
+    let news_sub_title = $('input[name="news_sub_title"]').val().trim();
+    let news_description = $('textarea[name="news_description"]').val().trim();
     let image_hidden = $('input[name="image_hidden"]').val().trim();
     let thumb_hidden = $('input[name="thumb_hidden"]').val().trim();
     let width_hidden = $('input[name="width_hidden"]').val().trim();
     let height_hidden = $('input[name="height_hidden"]').val().trim();
-    var event_active = $('#event_active');
+    var news_active = $('#news_active');
     active = 0;
-    if(event_active.prop('checked'))
+    if(news_active.prop('checked'))
       active = 1;
     let action_url = $(this).attr('action');
     let csrfToken = $(this).find('input[name="_token"]').val().trim();
@@ -100,15 +96,14 @@ $(document).ready(function(){
       url: action_url,
       type: 'POST',
       data: {
-        event_title: event_title,
-        event_sub_title: event_sub_title,
-        event_price: event_price,
-        event_description: event_description,
+        news_title: news_title,
+        news_sub_title: news_sub_title,
+        news_description: news_description,
         image_hidden: image_hidden,
         thumb_hidden: thumb_hidden,
         width_hidden: width_hidden,
         height_hidden: height_hidden,
-        event_active: active,
+        news_active: active,
         _token: csrfToken
       },
       dataType: 'json',
@@ -152,9 +147,9 @@ function activeId(element, id){
     datatype: 'JSON',
     data: { 
       id: id,
-      event_active: active
+      news_active: active
     },
-    url: '/admin/event/active',
+    url: '/admin/news/active',
     success: function (result) {
       var Toast = Swal.mixin({
         toast: true,
@@ -186,7 +181,7 @@ function deleteRowId() {
     data: { 
       id: modal_hidden_value
     },
-    url: '/admin/event/delete',
+    url: '/admin/news/delete',
     success: function (result) {
       location.reload();
     }

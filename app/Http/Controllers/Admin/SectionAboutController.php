@@ -15,6 +15,33 @@ class SectionAboutController extends Controller
     public function __construct(){
         $this->section_about = new SectionAbout();
     }
+    function displayViewAdd(){
+        return [
+            'page_view' => 'admin.section_about.add',
+            'title' => 'Thêm danh mục giới thiệu',
+            'button_save' => 'Lưu danh mục giới thiệu',
+            'button_list' => 'Danh sách danh mục giới thiệu',
+            'button_list_href' => '/admin/section-about/list',
+        ];   
+    }
+    function displayViewEdit(){
+        return [
+            'page_view' => 'admin.section_about.edit',
+            'title' => 'Chỉnh sửa thông tin danh mục giới thiệu',
+            'button_save' => 'Lưu danh mục giới thiệu',
+            'button_list' => 'Danh sách danh mục giới thiệu',
+            'button_list_href' => '/admin/section-about/list',
+        ];
+    }
+    function displayViewList(){
+        return [
+            'page_view' => 'admin.section_about.list',
+            'title' => 'Danh sách danh mục giới thiệu',
+            'search_view' => 'search',
+            'button_add' => 'Thêm danh mục giới thiệu',
+            'button_add_href' => '/admin/section-about/add',
+        ];
+    }
     function setData(SectionAboutRequest $request){
         return [
             'title' => $request->section_about_title,
@@ -32,9 +59,8 @@ class SectionAboutController extends Controller
         return self::list();
     }
     public function add(){
-        $page_view = 'admin.section_about.add';
-        $title = 'Section About / Add';
-        return view('admin.main', compact('page_view', 'title'));
+        $display_view = self::displayViewAdd();
+        return view('admin.main', compact('display_view'));
     }
     public function postAdd(SectionAboutRequest $request){
         $data = self::setData($request);
@@ -42,8 +68,7 @@ class SectionAboutController extends Controller
         return response()->json(['status'=>'success']);
     }
     public function edit(Request $request, $id){
-        $page_view = 'admin.section_about.edit';
-        $title = 'Section About / Edit';
+        $display_view = self::displayViewEdit();
         $section_about = $this->section_about->getId($id);
         if(!empty($id)){
             if(!empty($section_about[0])){
@@ -55,7 +80,7 @@ class SectionAboutController extends Controller
         }else{
             return redirect()->route('admin.section_about.index')->with('msg', 'liên kết không tồn tại');
         }
-        return view('admin.main', compact('page_view', 'title', 'section_about'));
+        return view('admin.main', compact('display_view', 'section_about'));
     }
     public function postEdit(SectionAboutRequest $request){
         $id = session('id');
@@ -64,8 +89,7 @@ class SectionAboutController extends Controller
         return response()->json(['status'=>'success']);
      }
     public function list(){
-        $page_view = 'admin.section_about.list';
-        $title = 'Section About / List';
+        $display_view = self::displayViewList();
         $num_page = self::PAGE;
         $section_about_list = $this->section_about->getPage(self::PAGE);
         if($section_about_list->currentPage()!=1){
@@ -75,7 +99,7 @@ class SectionAboutController extends Controller
             if(count($section_about_list)==0)
                 return redirect('admin/section-about/add');
         }
-        return view('admin.main', compact('page_view', 'title', 'section_about_list', 'num_page'));
+        return view('admin.main', compact('display_view', 'section_about_list', 'num_page'));
     }
     public function active(Request $request){
         $data = [

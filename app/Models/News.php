@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Gallery extends Authenticatable
+class News extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,6 +22,7 @@ class Gallery extends Authenticatable
     protected $fillable = [
         'id',
         'title',
+        'sub_title',
         'description',
         'image',
         'thumb',
@@ -51,30 +52,30 @@ class Gallery extends Authenticatable
     ];
 
     use HasFactory;
-    protected $table = 'gallery';
+    protected $table = 'news';
     public function getAll(){
-        $gallery = DB::table($this->table)->orderBy('title', 'ASC')->get();
-        return $gallery;
+        $event = DB::table($this->table)->orderBy('title', 'ASC')->get();
+        return $event;
     }
     public function getAllActive(){
-        $gallery = DB::table($this->table)->where('active', '1')->orderBy('title', 'ASC')->get();
-        return $gallery;
+        $event = DB::table($this->table)->where('active', '1')->orderBy('title', 'ASC')->get();
+        return $event;
     }
     public function getPage($page=null){
-        $gallery = DB::table($this->table)->orderBy('title', 'ASC');
+        $event = DB::table($this->table)->orderBy('title', 'ASC');
         if(!empty($page)){
-            $gallery = $gallery->paginate($page);
+            $event = $event->paginate($page);
         }else{
-            $gallery = $gallery->get();
+            $event = $event->get();
         }
-        return $gallery;
+        return $event;
     }
     public function insert($data){
         DB::table($this->table)->insert($data);
     }
     public function getId($id){
-        $gallery = DB::table($this->table)->where('id', $id)->get();
-        return $gallery;
+        $event = DB::table($this->table)->where('id', $id)->get();
+        return $event;
     }
     public function deleteId($id){
         DB::table($this->table)->where('id', $id)->delete();

@@ -1,37 +1,25 @@
 function resetFields(){
-  $('input[name="event_title"]').val("");
-  $('input[name="event_sub_title"]').val("");
-  $('input[name="event_price"]').val("");
-  $('textarea[name="event_description"]').val("");
-  $('input[name="file"]').val("");
-  $('input[name="image_hidden"]').val("");
-  $('input[name="thumb_hidden"]').val("");
-  $('input[name="width_hidden"]').val("");
-  $('input[name="height_hidden"]').val("");
-  $('#image_show').html('');
+  $('input[name="why_us_title"]').val("");
+  $('input[name="why_us_sub_title"]').val("");
+  $('textarea[name="why_us_description"]').val("");
 }
 function resetErrorFields(){
-  $('.event_title_error').text('');
-  $('.event_title_error').text('');
+  $('.why_us_title_error').text('');
+  $('.why_us_title_error').text('');
 }
 function submitForm() {
   let button_save = document.getElementById("button_save");
   button_save.click();
 }
 $(document).ready(function(){
-  $('#admin_event_add').on('submit', function(e){
+  $('#admin_why_us_add').on('submit', function(e){
     e.preventDefault();
-    let event_title = $('input[name="event_title"]').val().trim();
-    let event_sub_title = $('input[name="event_sub_title"]').val().trim();
-    let event_price = $('input[name="event_price"]').val().trim();
-    let event_description = $('textarea[name="event_description"]').val().trim();
-    let image_hidden = $('input[name="image_hidden"]').val().trim();
-    let thumb_hidden = $('input[name="thumb_hidden"]').val().trim();
-    let width_hidden = $('input[name="width_hidden"]').val().trim();
-    let height_hidden = $('input[name="height_hidden"]').val().trim();
-    var event_active = $('#event_active');
+    let why_us_title = $('input[name="why_us_title"]').val().trim();
+    let why_us_sub_title = $('input[name="why_us_sub_title"]').val().trim();
+    let why_us_description = $('textarea[name="why_us_description"]').val().trim();
+    var why_us_active = $('#why_us_active');
     active = 0;
-    if(event_active.prop('checked'))
+    if(why_us_active.prop('checked'))
       active = 1;
     let action_url = $(this).attr('action');
     let csrfToken = $(this).find('input[name="_token"]').val().trim();
@@ -39,15 +27,10 @@ $(document).ready(function(){
       url: action_url,
       type: 'POST',
       data: {
-        event_title: event_title,
-        event_sub_title: event_sub_title,
-        event_price: event_price,
-        event_description: event_description,
-        image_hidden: image_hidden,
-        thumb_hidden: thumb_hidden,
-        width_hidden: width_hidden,
-        height_hidden: height_hidden,
-        event_active: active,
+        why_us_title: why_us_title,
+        why_us_sub_title: why_us_sub_title,
+        why_us_description: why_us_description,
+        why_us_active: active,
         _token: csrfToken
       },
       dataType: 'json',
@@ -82,15 +65,10 @@ $(document).ready(function(){
 
   $('#admin_event_edit').on('submit', function(e){
     e.preventDefault();
-    let event_title = $('input[name="event_title"]').val().trim();
-    let event_sub_title = $('input[name="event_sub_title"]').val().trim();
-    let event_price = $('input[name="event_price"]').val().trim();
-    let event_description = $('textarea[name="event_description"]').val().trim();
-    let image_hidden = $('input[name="image_hidden"]').val().trim();
-    let thumb_hidden = $('input[name="thumb_hidden"]').val().trim();
-    let width_hidden = $('input[name="width_hidden"]').val().trim();
-    let height_hidden = $('input[name="height_hidden"]').val().trim();
-    var event_active = $('#event_active');
+    let why_us_title = $('input[name="why_us_title"]').val().trim();
+    let why_us_sub_title = $('input[name="why_us_sub_title"]').val().trim();
+    let why_us_description = $('textarea[name="why_us_description"]').val().trim();
+    var why_us_active = $('#why_us_active');
     active = 0;
     if(event_active.prop('checked'))
       active = 1;
@@ -100,15 +78,10 @@ $(document).ready(function(){
       url: action_url,
       type: 'POST',
       data: {
-        event_title: event_title,
-        event_sub_title: event_sub_title,
-        event_price: event_price,
-        event_description: event_description,
-        image_hidden: image_hidden,
-        thumb_hidden: thumb_hidden,
-        width_hidden: width_hidden,
-        height_hidden: height_hidden,
-        event_active: active,
+        why_us_title: why_us_title,
+        why_us_sub_title: why_us_sub_title,
+        why_us_description: why_us_description,
+        why_us_active: active,
         _token: csrfToken
       },
       dataType: 'json',
@@ -152,9 +125,9 @@ function activeId(element, id){
     datatype: 'JSON',
     data: { 
       id: id,
-      event_active: active
+      why_us_active: active
     },
-    url: '/admin/event/active',
+    url: '/admin/why-us/active',
     success: function (result) {
       var Toast = Swal.mixin({
         toast: true,
@@ -186,7 +159,7 @@ function deleteRowId() {
     data: { 
       id: modal_hidden_value
     },
-    url: '/admin/event/delete',
+    url: '/admin/why-us/delete',
     success: function (result) {
       location.reload();
     }

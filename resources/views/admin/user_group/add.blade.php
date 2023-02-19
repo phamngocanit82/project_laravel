@@ -17,11 +17,11 @@
             </div>
           </div>
           <div class="mb-3 mt-4">
-            <input class="form-check-input" type="checkbox" id="user_group_active" checked>
+            <input class="form-check-input" type="checkbox" id="user_group_active" name="user_group_active" checked>
             <label class="form-label">Active</label>
           </div>
-          <button class="btn btn-primary" type="submit">Add</button>
-          <a class="ms-4 btn btn-primary" href="/admin/user-group/list">List</a>
+          <button class="btn btn-primary" type="submit" id="button_save" hidden>Add</button>
+          <a class="ms-4 btn btn-primary" href="/admin/user-group/list" hidden>List</a>
           @csrf
         </form>
       </div>

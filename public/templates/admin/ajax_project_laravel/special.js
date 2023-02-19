@@ -14,6 +14,10 @@ function resetErrorFields(){
   $('.special_item_error').text('');
   $('.special_title_error').text('');
 }
+function submitForm() {
+  let button_save = document.getElementById("button_save");
+  button_save.click();
+}
 $(document).ready(function(){
   $('#admin_special_add').on('submit', function(e){
     e.preventDefault();

@@ -9,8 +9,10 @@ use App\Http\Controllers\Admin\Product\ProductGroupController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\SpecialController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\SectionAboutController;
+use App\Http\Controllers\Admin\WhyUsController;
 use App\Http\Controllers\Client\AboutController;
 use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\MainController;
@@ -77,7 +79,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('active', [UserController::class, 'active']);
         Route::delete('delete', [UserController::class, 'delete']);
     });
-    
+    #WhyUs
+    Route::prefix('why-us')->name('why-us.')->group(function () {
+        Route::get('add', [WhyUsController::class, 'add'])->name('index');
+        Route::get('/', [WhyUsController::class, 'index'])->name('index');
+        Route::get('add', [WhyUsController::class, 'add'])->name('add');
+        Route::post('add', [WhyUsController::class, 'postAdd'])->name('post-add');
+        Route::get('edit/{id}', [WhyUsController::class, 'edit'])->name('edit');
+        Route::post('edit', [WhyUsController::class, 'postEdit'])->name('post-edit');
+        Route::get('list', [WhyUsController::class, 'list']);
+        Route::post('active', [WhyUsController::class, 'active']);
+        Route::delete('delete', [WhyUsController::class, 'delete']);
+    });
     #Product group
     Route::prefix('product-group')->name('product-group.')->group(function () {
         Route::get('add', [ProductGroupController::class, 'add'])->name('index');
@@ -124,6 +137,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('list', [EventController::class, 'list']);
         Route::post('active', [EventController::class, 'active']);
         Route::delete('delete', [EventController::class, 'delete']);
+    });
+    #News
+    Route::prefix('news')->name('news.')->group(function () {
+        Route::get('add', [NewsController::class, 'add'])->name('index');
+        Route::get('/', [NewsController::class, 'index'])->name('index');
+        Route::get('add', [NewsController::class, 'add'])->name('add');
+        Route::post('add', [NewsController::class, 'postAdd'])->name('post-add');
+        Route::get('edit/{id}', [NewsController::class, 'edit'])->name('edit');
+        Route::post('edit', [NewsController::class, 'postEdit'])->name('post-edit');
+        Route::get('list', [NewsController::class, 'list']);
+        Route::post('active', [NewsController::class, 'active']);
+        Route::delete('delete', [NewsController::class, 'delete']);
     });
     #Gallery
     Route::prefix('gallery')->name('gallery.')->group(function () {

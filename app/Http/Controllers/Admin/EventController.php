@@ -15,6 +15,33 @@ class EventController extends Controller
     public function __construct(){
         $this->event = new Event();
     }
+    function displayViewAdd(){
+        return [
+            'page_view' => 'admin.event.add',
+            'title' => 'Thêm sự kiện',
+            'button_save' => 'Lưu sự kiện',
+            'button_list' => 'Danh sách sự kiện',
+            'button_list_href' => '/admin/event/list',
+        ];   
+    }
+    function displayViewEdit(){
+        return [
+            'page_view' => 'admin.event.edit',
+            'title' => 'Chỉnh sửa thông tin sự kiện',
+            'button_save' => 'Lưu sự kiện',
+            'button_list' => 'Danh sách sự kiện',
+            'button_list_href' => '/admin/event/list',
+        ];
+    }
+    function displayViewList(){
+        return [
+            'page_view' => 'admin.event.list',
+            'title' => 'Danh sách sự kiện',
+            'search_view' => 'search',
+            'button_add' => 'Thêm sự kiện',
+            'button_add_href' => '/admin/event/add',
+        ];
+    }
     function setData(EventRequest $request){
         return [
             'title' => $request->event_title,
@@ -34,9 +61,8 @@ class EventController extends Controller
         return self::list();
     }
     public function add(){
-        $page_view = 'admin.event.add';
-        $title = 'Events / Add';
-        return view('admin.main', compact('page_view', 'title'));
+        $display_view = self::displayViewAdd();
+        return view('admin.main', compact('display_view'));
     }
     public function postAdd(EventRequest $request){
         $data = self::setData($request);
@@ -44,8 +70,7 @@ class EventController extends Controller
         return response()->json(['status'=>'success']);
     }
     public function edit(Request $request, $id){
-        $page_view = 'admin.event.edit';
-        $title = 'Events/ Edit';
+        $display_view = self::displayViewEdit();
         $event = $this->event->getId($id);
         if(!empty($id)){
             if(!empty($event[0])){
@@ -57,7 +82,7 @@ class EventController extends Controller
         }else{
             return redirect()->route('admin.event.index')->with('msg', 'liên kết không tồn tại');
         }
-        return view('admin.main', compact('page_view', 'title', 'event'));
+        return view('admin.main', compact('display_view', 'event'));
     }
     public function postEdit(EventRequest $request){
         $id = session('id');
@@ -66,8 +91,7 @@ class EventController extends Controller
         return response()->json(['status'=>'success']);
      }
     public function list(){
-        $page_view = 'admin.event.list';
-        $title = 'Events / List';
+        $display_view = self::displayViewList();
         $num_page = self::PAGE;
         $event_list = $this->event->getPage(self::PAGE);
         if($event_list->currentPage()!=1){
@@ -77,7 +101,7 @@ class EventController extends Controller
             if(count($event_list)==0)
                 return redirect('admin/event/add');
         }
-        return view('admin.main', compact('page_view', 'title', 'event_list', 'num_page'));
+        return view('admin.main', compact('display_view', 'event_list', 'num_page'));
     }
     public function active(Request $request){
         $data = [
