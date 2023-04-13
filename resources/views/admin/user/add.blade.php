@@ -4,17 +4,21 @@
       <div class="card-body">
         <form form action="{{route('admin.user.post-add')}}" method="POST" id="admin_user_add">
           <div class="row g-3">
-            <div class="col-md-12">
+            <div class="col-md-8">
               <label class="form-label">User group list</label>
-              <select class="form-select" name="user_group_id" id="user_group_id">
-                <option value="0">Choose user group</option>
-                @if(!empty($userGroup = \App\Helpers\Functions::getAllUserGroup()))
-                  @foreach($userGroup as $item)
-                <option value="{{$item->id}}" 
-                    {{request()->user_group_id == $item->id?'selected':false}}>{{$item->name}}</option>
-                  @endforeach
-                @endif 
-              </select>
+              <div style="display: flex;">
+                <select class="form-select" name="user_group_id" id="user_group_id">
+                  <option value="0">Choose user group</option>
+                  @if(!empty($userGroup = \App\Helpers\Functions::getAllUserGroup()))
+                    @foreach($userGroup as $item)
+                  <option value="{{$item->id}}" 
+                      {{request()->user_group_id == $item->id?'selected':false}}>{{$item->name}}</option>
+                    @endforeach
+                  @endif 
+                </select>
+                <div class="mt-2 mx-2"><a class="text-dark" href="/admin/user-group/add"><i data-feather="file-plus"></i></a></div>
+                <div class="mt-2 mx-2"><a class="text-dark" href="/admin/user-group/list"><i data-feather="layers"></i></a></div>
+              </div>
               <div><span class="text-danger user_group_id_error"></span></div>
             </div>
           </div>

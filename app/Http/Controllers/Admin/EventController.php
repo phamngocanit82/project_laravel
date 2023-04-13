@@ -28,6 +28,8 @@ class EventController extends Controller
         return [
             'page_view' => 'admin.event.edit',
             'title' => 'Chỉnh sửa thông tin sự kiện',
+            'button_add' => 'Thêm sự kiện',
+            'button_add_href' => '/admin/event/add',
             'button_save' => 'Lưu sự kiện',
             'button_list' => 'Danh sách sự kiện',
             'button_list_href' => '/admin/event/list',

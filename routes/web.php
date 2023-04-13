@@ -13,8 +13,8 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\SectionAboutController;
 use App\Http\Controllers\Admin\WhyUsController;
-use App\Http\Controllers\Client\AboutController;
-use App\Http\Controllers\Client\ContactController;
+use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Client\MainController;
 use App\Http\Controllers\Client\ServiceController;
 use \App\Http\Controllers\Admin\UploadController;
@@ -38,8 +38,7 @@ Route::get('admin/user/recover-password', [LoginController::class, 'recover_pass
 
 Route::get('', [MainController::class, 'index']);
 Route::get('services', [ServiceController::class, 'index']);
-Route::get('about', [AboutController::class, 'index']);
-Route::get('contact', [ContactController::class, 'index']);
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminMainController::class, 'index']);
@@ -161,6 +160,24 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('list', [GalleryController::class, 'list']);
         Route::post('active', [GalleryController::class, 'active']);
         Route::delete('delete', [GalleryController::class, 'delete']);
+    });
+    #About
+    Route::prefix('about')->name('about.')->group(function () {
+        Route::get('add', [AboutController::class, 'add'])->name('index');
+        Route::get('/', [AboutController::class, 'index'])->name('index');
+        Route::get('add', [AboutController::class, 'add'])->name('add');
+        Route::post('add', [AboutController::class, 'postAdd'])->name('post-add');
+        Route::get('edit/{id}', [AboutController::class, 'edit'])->name('edit');
+        Route::post('edit', [AboutController::class, 'postEdit'])->name('post-edit');
+        Route::get('list', [AboutController::class, 'list']);
+        Route::post('active', [AboutController::class, 'active']);
+        Route::delete('delete', [AboutController::class, 'delete']);
+    });
+    #Contact
+    Route::prefix('contact')->name('contact.')->group(function () {
+        Route::get('mail', [ContactController::class, 'mail'])->name('index');
+        Route::get('/', [ContactController::class, 'mail'])->name('index');
+        Route::get('mail', [ContactController::class, 'mail'])->name('mail');
     });
     #Upload
     Route::post('upload-services', [UploadController::class, 'store']);

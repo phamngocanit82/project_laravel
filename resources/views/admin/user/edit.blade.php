@@ -4,17 +4,21 @@
       <div class="card-body">
         <form form action="{{route('admin.user.post-edit')}}" method="POST" id="admin_user_edit">
           <div class="row g-3">
-            <div class="col-md-12">
+            <div class="col-md-9">
               <label class="form-label">User group list</label>
-              <select class="form-select" name="user_group_id" id="user_group_id">
-                <option value="0">Choose user group</option>
-                @if(!empty($userGroup = \App\Helpers\Functions::getAllUserGroup()))
-                  @foreach($userGroup as $item)
-                <option value="{{$item->id}}" 
-                    {{request()->user_group_id ?? $user->user_group_id == $item->id?'selected':false}}>{{$item->name}}</option>
-                  @endforeach
-                @endif 
-              </select>
+              <div style="display: flex;">
+                <select class="form-select" name="user_group_id" id="user_group_id">
+                  <option value="0">Choose user group</option>
+                  @if(!empty($userGroup = \App\Helpers\Functions::getAllUserGroup()))
+                    @foreach($userGroup as $item)
+                  <option value="{{$item->id}}" 
+                      {{request()->user_group_id ?? $user->user_group_id == $item->id?'selected':false}}>{{$item->name}}</option>
+                    @endforeach
+                  @endif 
+                </select>
+                <div class="mt-2 mx-2"><a class="text-dark" href="/admin/user-group/add"><i data-feather="file-plus"></i></a></div>
+                <div class="mt-2 mx-2"><a class="text-dark" href="/admin/user-group/list"><i data-feather="layers"></i></a></div>
+              </div>
               <div><span class="text-danger user_group_id_error"></span></div>
             </div>
           </div>
@@ -86,7 +90,7 @@
               <input type="hidden" name="height_hidden" id="height_hidden" value="{{$user->height}}">
             </div>
           </div>
-          <div class="mb-3 mt-4">
+          <div class="mt-4">
             <input class="form-check-input" type="checkbox" id="user_active" name="user_active" type="checkbox" onclick="activeId(this, {{$user->id}})" {!!$user->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>

@@ -51,15 +51,15 @@ class ProductGroup extends Authenticatable
     use HasFactory;
     protected $table = 'product_group';
     public function getAll(){
-        $product_group = DB::table($this->table)->orderBy('name', 'ASC')->get();
+        $product_group = DB::table($this->table)->orderBy('id', 'ASC')->get();
         return $product_group;
     }
     public function getAllActive(){
-        $product_group = DB::table($this->table)->where('active', '1')->orderBy('name', 'ASC')->get();
+        $product_group = DB::table($this->table)->where('active', '1')->orderBy('id', 'ASC')->get();
         return $product_group;
     }
     public function getPage($page=null){
-        $product_group = DB::table($this->table)->orderBy('name', 'ASC');
+        $product_group = DB::table($this->table)->orderBy('id', 'ASC');
         if(!empty($page)){
             $product_group = $product_group->paginate($page);
         }else{

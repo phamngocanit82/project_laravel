@@ -28,6 +28,8 @@ class SpecialController extends Controller
         return [
             'page_view' => 'admin.special.edit',
             'title' => 'Chỉnh sửa thông tin chương trình đặc biệt',
+            'button_add' => 'Thêm chương trình đặc biệt',
+            'button_add_href' => '/admin/special/add',
             'button_save' => 'Lưu chương trình đặc biệt',
             'button_list' => 'Danh sách chương trình đặc biệt',
             'button_list_href' => '/admin/special/list',

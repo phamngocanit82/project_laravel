@@ -57,4 +57,7 @@ $(document).ready(function(){
   $('#image_gallery_upload').change(function () {
     file_upload('#image_gallery_upload', '#image_show', '#image_hidden', 'gallery');
   });
+  $('#image_about_upload').change(function () {
+    file_upload('#image_about_upload', '#image_show', '#image_hidden', 'about');
+  });
 });

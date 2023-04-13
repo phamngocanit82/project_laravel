@@ -21,6 +21,7 @@
               <p class="fst-italic">{{$item->sub_title}}</p>
               <ul>
                 <li><i class="bi bi-check-circled"></i>{{$item->description}}</li>
+                <li><i class="bi bi-check-circled"></i>{{$item->description}}</li>
               </ul>
               <p>{{$item->description}}</p>
             </div>

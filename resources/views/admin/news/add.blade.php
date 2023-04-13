@@ -19,7 +19,7 @@
           <div class="row g-3">
             <div class="col-md-12 mt-4">
               <label class="form-label">Description</label>
-              <textarea class="form-control" style ="height:60px" name="news_description">{{old('news_description')}}</textarea>
+              <div><textarea class="form-control" id="news_description" name="news_description">{{old('news_description')}}</textarea><div>
             </div>
           </div>
           <div class="row g-3">
@@ -33,7 +33,7 @@
               <input type="hidden" name="height_hidden" id="height_hidden">
             </div>
           </div>
-          <div class="mb-3 mt-4">
+          <div class="mt-4">
             <input class="form-check-input" type="checkbox" id="news_active" name="news_active" checked>
             <label class="form-label">Active</label>
           </div>
@@ -48,4 +48,8 @@
 @section('ajax')
 <script src="/templates/admin/ajax_project_laravel/file_upload.js"></script>
 <script src="/templates/admin/ajax_project_laravel/news.js"></script>
+<script src="{{ asset('/templates/admin/ckeditor/ckeditor.js') }}"></script>
+<script>
+  CKEDITOR.replace( 'news_description' );
+</script>
 @endsection

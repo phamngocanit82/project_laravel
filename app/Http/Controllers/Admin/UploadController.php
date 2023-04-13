@@ -13,7 +13,7 @@ class UploadController extends Controller
         $this->upload = $upload;
     }
     public function store(Request $request){
-        $data = $this->upload->store($request);     
+        $data = $this->upload->store($request); 
         if ($data !== false) {
             return response()->json([
                 'error' => false,

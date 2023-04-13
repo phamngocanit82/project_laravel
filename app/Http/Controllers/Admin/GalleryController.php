@@ -28,6 +28,8 @@ class GalleryController extends Controller
         return [
             'page_view' => 'admin.gallery.edit',
             'title' => 'Chỉnh sửa thông tin thư viện ảnh',
+            'button_add' => 'Thêm thư viện ảnh',
+            'button_add_href' => '/admin/gallery/add',
             'button_save' => 'Lưu thư viện ảnh',
             'button_list' => 'Danh sách thư viện ảnh',
             'button_list_href' => '/admin/gallery/list',

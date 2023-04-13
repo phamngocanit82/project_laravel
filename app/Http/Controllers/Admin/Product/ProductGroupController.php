@@ -28,6 +28,8 @@ class ProductGroupController extends Controller
         return [
             'page_view' => 'admin.product_group.edit',
             'title' => 'Chỉnh sửa thông tin nhóm sản phẩm',
+            'button_add' => 'Thêm nhóm sản phẩm',
+            'button_add_href' => '/admin/product-group/add',
             'button_save' => 'Lưu nhóm sản phẩm',
             'button_list' => 'Danh sách nhóm sản phẩm',
             'button_list_href' => '/admin/product-group/list',

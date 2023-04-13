@@ -38,13 +38,9 @@
             </ul>
           </li>
 
-          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>Contacts</span></a>
-            <ul class="nav-submenu menu-content">
-              <li><a href="#">Inbox</a></li>
-              <li><a href="#">Trash</a></li>
-            </ul>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="/admin/contact/mail"><i data-feather="codepen"></i><span>Contacts</span></a>
           </li>
-          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="javascript:void(0)"><i data-feather="codepen"></i><span>About</span></a>
+          <li class="dropdown"><a class="nav-link menu-title link-nav active" href="/admin/about/add"><i data-feather="codepen"></i><span>About</span></a>
           </li>
         </ul>
       </div>

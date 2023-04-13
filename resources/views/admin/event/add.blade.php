@@ -39,7 +39,7 @@
               <input type="hidden" name="height_hidden" id="height_hidden">
             </div>
           </div>
-          <div class="mb-3 mt-4">
+          <div class="mt-4">
             <input class="form-check-input" type="checkbox" id="event_active" name="event_active" checked>
             <label class="form-label">Active</label>
           </div>

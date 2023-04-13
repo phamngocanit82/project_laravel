@@ -4,17 +4,21 @@
       <div class="card-body">
         <form form action="{{route('admin.product.post-edit')}}" method="POST" id="admin_product_edit">
           <div class="row g-3">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <label class="form-label">Product group list</label>
-              <select class="form-select" name="product_group_id" id="product_group_id">
-                <option value="0">Choose product group</option>
-                @if(!empty($productGroup = \App\Helpers\Functions::getAllProductGroup()))
-                  @foreach($productGroup as $item)
-                <option value="{{$item->id}}" 
-                    {{request()->product_group_id ?? $product->product_group_id == $item->id?'selected':false}}>{{$item->name}}</option>
-                  @endforeach
-                @endif 
-              </select>
+              <div style="display: flex;">
+                <select class="form-select" name="product_group_id" id="product_group_id">
+                  <option value="0">Choose product group</option>
+                  @if(!empty($productGroup = \App\Helpers\Functions::getAllProductGroup()))
+                    @foreach($productGroup as $item)
+                  <option value="{{$item->id}}" 
+                      {{request()->product_group_id ?? $product->product_group_id == $item->id?'selected':false}}>{{$item->name}}</option>
+                    @endforeach
+                  @endif 
+                </select>
+                <div class="mt-2 mx-2"><a class="text-dark" href="/admin/product-group/add"><i data-feather="file-plus"></i></a></div>
+                <div class="mt-2 mx-2"><a class="text-dark" href="/admin/product-group/list"><i data-feather="layers"></i></a></div>
+              </div>
               <div><span class="text-danger product_group_id_error"></span></div>
             </div>
           </div>
@@ -64,7 +68,7 @@
               <input type="hidden" name="height_hidden" id="height_hidden" value="{{$product->height}}">
             </div>
           </div>
-          <div class="mb-3 mt-4">
+          <div class="mt-4">
             <input class="form-check-input" type="checkbox" id="product_active" name="product_active" type="checkbox" onclick="activeId(this, {{$product->id}})" {!!$product->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>

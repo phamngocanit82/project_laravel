@@ -28,6 +28,8 @@ class WhyUsController extends Controller
         return [
             'page_view' => 'admin.why_us.edit',
             'title' => 'Chỉnh sửa thông tin tại sao là chúng tôi',
+            'button_add' => 'Thêm tại sao là chúng tôi',
+            'button_add_href' => '/admin/why-us/add',
             'button_save' => 'Lưu tại sao là chúng tôi',
             'button_list' => 'Danh sách tại sao là chúng tôi',
             'button_list_href' => '/admin/why-us/list',

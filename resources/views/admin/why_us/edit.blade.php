@@ -22,7 +22,7 @@
               <textarea class="form-control" style ="height:60px" name="why_us_description">{{old('why_us_description') ?? $why_us->description}}</textarea>
             </div>
           </div>
-          <div class="mb-3 mt-4">
+          <div class="mt-4">
             <input class="form-check-input" type="checkbox" id="why_us_active" name="why_us_active" onclick="activeId(this, {{$why_us->id}})" {!!$why_us->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>

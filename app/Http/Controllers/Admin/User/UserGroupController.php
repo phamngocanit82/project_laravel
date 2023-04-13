@@ -29,6 +29,8 @@ class UserGroupController extends Controller
         return [
             'page_view' => 'admin.user_group.edit',
             'title' => 'Chỉnh sửa thông tin nhóm người dùng',
+            'button_add' => 'Thêm nhóm người dùng',
+            'button_add_href' => '/admin/user-group/add',
             'button_save' => 'Lưu nhóm người dùng',
             'button_list' => 'Danh sách nhóm người dùng',
             'button_list_href' => '/admin/user-group/list',
@@ -94,7 +96,7 @@ class UserGroupController extends Controller
                 return redirect('admin/user-group/list');
         }else{
             if(count($user_group_list)==0)
-                return redirect('admin/suser/add');
+                return redirect('admin/user-group/add');
         }
         return view('admin.main', compact('display_view', 'user_group_list', 'num_page'));
     }

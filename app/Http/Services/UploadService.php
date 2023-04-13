@@ -9,6 +9,13 @@ class UploadService
     {
         if ($request->file('file')->isValid()) {
             try {
+                /*
+                $path_imageName = $image->storeAs(public_path($folder), $imageName, 'my_upload');
+                
+                $resized_image = Image::make($image);
+                $resized_image->fit(150)->save($image);
+                $path_thumbName = $image->storeAs(public_path($folder), $thumbName, 'my_upload');
+                */
                 $image = $request->file('file');
                 $width = Image::make($image)->width(); 
                 $height = Image::make($image)->height(); 
@@ -19,11 +26,12 @@ class UploadService
                 $pathFull = 'uploads/'.$folder;
                 
                 $image->storeAs('public/' . $pathFull, $imageName);
+                
                 $image = Image::make($image->getRealPath());
+               
                 $image->resize(150, 150, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save(public_path('/storage/uploads/'.$folder.'/'.$thumbName));
-
                 return [
                     'path' => '/storage/'.$pathFull.'/'. $imageName,
                     'thumb' => '/storage/'.$pathFull.'/'. $thumbName,

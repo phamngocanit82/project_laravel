@@ -20,6 +20,7 @@ class Product extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'product_group_id',
         'name',
         'code',

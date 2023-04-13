@@ -46,7 +46,7 @@
               <input type="hidden" name="height_hidden" id="height_hidden" value="{{$event->height}}">
             </div>
           </div>
-          <div class="mb-3 mt-4">
+          <div class="mt-4">
             <input class="form-check-input" type="checkbox" id="event_active" name="event_active" onclick="activeId(this, {{$event->id}})" {!!$event->active==1? 'checked':''!!}>
             <label class="form-label">Active</label>
           </div>

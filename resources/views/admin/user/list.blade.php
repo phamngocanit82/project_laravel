@@ -8,7 +8,7 @@
           <div class="ribbon ribbon-clip-right ribbon-right ribbon-primary">{{$item->user_group_name}}</div>
           <div  class="gallery my-gallery mb-1" id="aniimated-thumbnials13" itemscope="" data-pswp-uid="14">
             <figure style="width:100px; height:100px;" class="col-md-3 img-hover hover-14" itemprop="associatedMedia" itemscope=""><a href="{{$item->avatar}}" itemprop="contentUrl" data-size="{{$item->width}}x{{$item->height}}">
-              <div><img class="me-1 rounded-circle" style="width:100px; height:100px; object-fit:cover;" src="{{$item->thumb}}" itemprop="thumbnail" alt=""></div></a>
+              <div><img class="me-1 rounded-circle" style="width:100px; height:100px; object-fit:scale-down;" src="{{$item->thumb}}" itemprop="thumbnail" alt=""></div></a>
               <figcaption itemprop="caption description">{{$item->first_name.' '.$item->last_name.' '.$item->middle_name.' - '.$item->user_group_name}}</figcaption>
             </figure>
           </div>

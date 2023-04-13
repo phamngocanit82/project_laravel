@@ -28,6 +28,8 @@ class ProductController extends Controller
         return [
             'page_view' => 'admin.product.edit',
             'title' => 'Chỉnh sửa thông tin sản phẩm',
+            'button_add' => 'Thêm sản phẩm',
+            'button_add_href' => '/admin/product/add',
             'button_save' => 'Lưu sản phẩm',
             'button_list' => 'Danh sách sản phẩm',
             'button_list_href' => '/admin/product/list',

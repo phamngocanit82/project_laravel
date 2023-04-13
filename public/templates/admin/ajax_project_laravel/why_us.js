@@ -63,14 +63,14 @@ $(document).ready(function(){
     });
   });
 
-  $('#admin_event_edit').on('submit', function(e){
+  $('#admin_why_us_edit').on('submit', function(e){
     e.preventDefault();
     let why_us_title = $('input[name="why_us_title"]').val().trim();
     let why_us_sub_title = $('input[name="why_us_sub_title"]').val().trim();
     let why_us_description = $('textarea[name="why_us_description"]').val().trim();
     var why_us_active = $('#why_us_active');
     active = 0;
-    if(event_active.prop('checked'))
+    if(why_us_active.prop('checked'))
       active = 1;
     let action_url = $(this).attr('action');
     let csrfToken = $(this).find('input[name="_token"]').val().trim();

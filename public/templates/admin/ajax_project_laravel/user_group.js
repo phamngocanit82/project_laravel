@@ -28,6 +28,7 @@ $(document).ready(function(){
       dataType: 'json',
       success: function(response){
         $('input[name="user_group_name"]').val("");
+        $('textarea[name="user_group_description"]').val("");
         resetErrorFields();
         var Toast = Swal.mixin({
                             toast: true,

@@ -28,6 +28,8 @@ class NewsController extends Controller
         return [
             'page_view' => 'admin.news.edit',
             'title' => 'Chỉnh sửa thông tin tin tức',
+            'button_add' => 'Thêm tin tức',
+            'button_add_href' => '/admin/news/add',
             'button_save' => 'Lưu tin tức',
             'button_list' => 'Danh sách tin tức',
             'button_list_href' => '/admin/news/list',
